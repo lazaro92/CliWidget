@@ -12,5 +12,9 @@ int main() {
 
 	select.display(std::cout);
 
+	int index = select.getSelectedIndex();
+
+	std::cout << "Selected index is " << index << std::endl;
+
 	return 0;
 }
