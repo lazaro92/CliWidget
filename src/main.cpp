@@ -13,8 +13,10 @@ int main() {
 	select.display(std::cout);
 
 	int index = select.getSelectedIndex();
+	std::string value = select.getSelectedValue();
 
 	std::cout << "Selected index is " << index << std::endl;
+	std::cout << "Selected value is " << value << std::endl;
 
 	return 0;
 }
