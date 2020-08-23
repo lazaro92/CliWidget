@@ -5,7 +5,7 @@
 #include <string>
 
 int main() {
-	Select select("Text with options:");
+	CliWidget::Select select("Text with options:");
 
 	std::vector<std::string> options = {"One", "Two", "Three"};
 	select.setOptions(options);

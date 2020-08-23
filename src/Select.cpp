@@ -3,100 +3,108 @@
 
 #include "Select.hpp"
 
-void Select::setText(const std::string &text) {
-		outText = text;
-}
+namespace CliWidget {
 
-std::string& Select::getText() {
-		return outText;
-}
+    void Select::setText(const std::string &text) {
+        _text = text;
+    }
 
-void Select::setOptions(const std::vector<std::string> &options) {
-		opts = options;
-}
+    std::string& Select::getText() {
+        return _text;
+    }
 
-std::vector<std::string>& Select::getOptions() {
-		return opts;
-}
+    void Select::setOptions(const std::vector<std::string> &options) {
+        _options = options;
+    }
 
-void Select::addOption(std::string &option) {
-		opts.push_back(option);
-}
+    std::vector<std::string>& Select::getOptions() {
+        return _options;
+    }
 
-void Select::removeOption(unsigned int i) {
-		opts.erase(opts.begin() + i);
-}
+    void Select::setCursor(char cursor) {
+        _cursor = cursor;
+    }
 
-unsigned int Select::getSelectedIndex() {
-		return index;
-}
+    void Select::addOption(std::string &option) {
+        _options.push_back(option);
+    }
 
-std::string Select::getSelectedValue() {
-	return opts.at(index);
-}
+    void Select::removeOption(unsigned int i) {
+        _options.erase(_options.begin() + i);
+    }
 
-std::ostream& Select::display(std::ostream &stream) {
-		unsigned int c = 'A';
+    unsigned int Select::getSelectedIndex() {
+        return _index;
+    }
 
-		changeTerminalMode(false);
-		stream << getTextToPrint();
+    std::string Select::getSelectedValue() {
+        return _options.at(_index);
+    }
 
-		do {
-				c = std::cin.get();
+    std::ostream& Select::display(std::ostream &stream) {
+        unsigned int c = 'A';
 
-				if (c == 'A' && index > 0) {
-						--index;
-						setTerminalCursor(stream);
-						stream << getTextToPrint();
-				}
-				else if (c == 'B' && index < opts.size() -1) {
-						++index;
-						setTerminalCursor(stream);
-						stream << getTextToPrint();
-				}
-		} while(c != '\n');
+        changeTerminalMode(false);
+        stream << getTextToPrint();
 
-		
-		changeTerminalMode(true);
-		return stream << std::endl;
-}
+        do {
+            c = std::cin.get();
 
-void Select::changeTerminalMode(bool reset) {
-		if (!reset) {
-			// Disable special processing of characters (e.g. delete line) and set the minimum number read to 1
-			// disable printing of keys as they're pressed
-			system("stty cbreak min 1 -echo");
+            if (c == 'A' && _index > 0) {
+                --_index;
+                setTerminalCursor(stream);
+                stream << getTextToPrint();
+            }
+            else if (c == 'B' && _index < _options.size() -1) {
+                ++_index;
+                setTerminalCursor(stream);
+                stream << getTextToPrint();
+            }
+        } while(c != '\n');
 
-			atexit([](){
-						//Reset the terminal to a sensible state
-						system("stty sane");
-						});
 
-			// Ensure clean exit to reset the terminal if the program is killed
-			signal(SIGTERM, [](int){exit(1);});
-		}
-		else {
-			system("stty sane");
-		}
-}
+        changeTerminalMode(true);
+        return stream << std::endl;
+    }
 
-std::ostream& Select::setTerminalCursor(std::ostream &stream) {
-	return stream << "\033[" << opts.size()+1 << "A\033[99D";
-}
+    void Select::changeTerminalMode(bool reset) {
+        if (!reset) {
+            // Disable special processing of characters (e.g. delete line) and set the minimum number read to 1
+            // disable printing of keys as they're pressed
+            system("stty cbreak min 1 -echo");
 
-std::string Select::getTextToPrint() {
-		std::string text = outText + '\n';
+            atexit([](){
+                    //Reset the terminal to a sensible state
+                    system("stty sane");
+                    });
 
-		std::vector<std::string>::size_type i = 0;
-		while (i < opts.size()) {
-				if (i == index) {
-						text += "\033[41m> " + opts.at(i) + "\033[0m\n";
-				}
-				else {
-						text += "  " + opts.at(i) + '\n';
-				}
-				++i;
-		}
+            // Ensure clean exit to reset the terminal if the program is killed
+            signal(SIGTERM, [](int){exit(1);});
+        }
+        else {
+            system("stty sane");
+        }
+    }
 
-		return text;
+    std::ostream& Select::setTerminalCursor(std::ostream &stream) {
+        return stream << "\033[" << _options.size()+1 << "A\033[99D";
+    }
+
+    std::string Select::getTextToPrint() {
+        std::string text = _text + '\n';
+
+        std::vector<std::string>::size_type i = 0;
+        while (i < _options.size()) {
+            if (i == _index) {
+                text += std::string("\033[41m") + _cursor + " " + _options.at(i) + "\033[0m\n";
+            }
+            else {
+                text += "  " + _options.at(i) + '\n';
+            }
+            ++i;
+        }
+
+        return text;
+    }
+
 }
