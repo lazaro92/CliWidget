@@ -5,34 +5,6 @@
 
 namespace CliWidget {
 
-    void Select::setText(const std::string &text) {
-        _text = text;
-    }
-
-    std::string& Select::getText() {
-        return _text;
-    }
-
-    void Select::setOptions(const std::vector<std::string> &options) {
-        _options = options;
-    }
-
-    std::vector<std::string>& Select::getOptions() {
-        return _options;
-    }
-
-    void Select::setCursor(char cursor) {
-        _cursor = cursor;
-    }
-
-    void Select::addOption(std::string &option) {
-        _options.push_back(option);
-    }
-
-    void Select::removeOption(unsigned int i) {
-        _options.erase(_options.begin() + i);
-    }
-
     unsigned int Select::getSelectedIndex() {
         return _index;
     }

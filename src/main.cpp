@@ -8,7 +8,7 @@ int main() {
 	CliWidget::Select select("Text with options:");
 
 	std::vector<std::string> options = {"One", "Two", "Three"};
-	select.setOptions(options);
+    select.setOptions(options);
 
 	select.display(std::cout);
 
