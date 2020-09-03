@@ -1,22 +1,28 @@
-#include "Select.hpp"
-
 #include <vector>
 #include <iostream>
 #include <string>
 
-int main() {
-	CliWidget::Select select("Text with options:");
+#include "Select.hpp"
+#include "Text.hpp"
 
-	std::vector<std::string> options = {"One", "Two", "Three"};
-    select.setOptions(options);
+int main() {
+	CliWidget::Select select(std::vector<std::string> {"One", "Two", "Three"});
 
 	select.display(std::cout);
 
 	int index = select.getSelectedIndex();
 	std::string value = select.getSelectedValue();
 
-	std::cout << "Selected index is " << index << std::endl;
-	std::cout << "Selected value is " << value << std::endl;
+    CliWidget::Text text1("Selected index is " + std::to_string(index) + "");
+    CliWidget::Text text2("Selected value is " + value + "");
+
+    text1.setBackgroundColor(CliWidget::BackgroundColor::GREEN);
+
+    text1.display(std::cout);
+    text2.display(std::cout);
+
+//	std::cout << "Selected index is " << index << std::endl;
+//	std::cout << "Selected value is " << value << std::endl;
 
 	return 0;
 }

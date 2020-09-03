@@ -5,6 +5,10 @@
 
 namespace CliWidget {
 
+    Select::Select(const std::vector<std::string> &options) : Widget(options) {
+    
+    }
+
     unsigned int Select::getSelectedIndex() {
         return _index;
     }
@@ -13,6 +17,10 @@ namespace CliWidget {
         return _options.at(_index);
     }
 
+    void Select::setCursor(char cursor) {
+        _cursor = cursor;
+    }
+    
     std::ostream& Select::display(std::ostream &stream) {
         unsigned int c = 'A';
 
@@ -44,10 +52,12 @@ namespace CliWidget {
             // Disable special processing of characters (e.g. delete line) and set the minimum number read to 1
             // disable printing of keys as they're pressed
             system("stty cbreak min 1 -echo");
+            system("tput civis");
 
             atexit([](){
                     //Reset the terminal to a sensible state
                     system("stty sane");
+                    system("tput cnorm");
                     });
 
             // Ensure clean exit to reset the terminal if the program is killed
@@ -55,15 +65,16 @@ namespace CliWidget {
         }
         else {
             system("stty sane");
+            system("tput cnorm");
         }
     }
 
     std::ostream& Select::setTerminalCursor(std::ostream &stream) {
-        return stream << "\033[" << _options.size()+1 << "A\033[99D";
+        return stream << "\033[" << _options.size() << "A\033[99D";
     }
 
     std::string Select::getTextToPrint() {
-        std::string text = _text + '\n';
+        std::string text = ""; 
 
         std::vector<std::string>::size_type i = 0;
         while (i < _options.size()) {
@@ -71,7 +82,7 @@ namespace CliWidget {
                 text += std::string("\033[41m") + _cursor + " " + _options.at(i) + "\033[0m\n";
             }
             else {
-                text += "  " + _options.at(i) + '\n';
+                text += "  " + _options.at(i) + "\n";
             }
             ++i;
         }

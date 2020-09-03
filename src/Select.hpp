@@ -11,18 +11,18 @@ namespace CliWidget {
 
     class Select: public Widget {
         public:
-            Select();
-            Select(const std::string &text): Widget(text) {}
-            Select(std::vector<std::string> &options, const std::string &text) : Widget(options, text) {}
+            Select(const std::vector<std::string> &options); 
 
             unsigned int getSelectedIndex();
             std::string getSelectedValue();
             std::ostream& display(std::ostream &stream);
+            void setCursor(char cursor);
 
         private:
             void changeTerminalMode(bool reset);
             std::ostream& setTerminalCursor(std::ostream& stream);
             std::string getTextToPrint();
+            char _cursor = '>';
     };
 }
 

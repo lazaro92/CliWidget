@@ -2,12 +2,9 @@
 
 namespace CliWidget {
     
-    void Widget::setText(const std::string &text) {
-        _text = text;
-    }
-
-    std::string& Widget::getText() {
-        return _text;
+    Widget::Widget(const std::vector<std::string> &options) : _options(options)
+    {
+   
     }
 
     void Widget::setOptions(const std::vector<std::string> &options) {
@@ -18,9 +15,6 @@ namespace CliWidget {
         return _options;
     }
 
-    void Widget::setCursor(char cursor) {
-        _cursor = cursor;
-    }
 
     void Widget::addOption(std::string &option) {
         _options.push_back(option);
