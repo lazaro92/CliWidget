@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <string>
-#include <iostream>
 
 #include "Widget.hpp"
 
@@ -19,10 +18,7 @@ namespace CliWidget {
             void setCursor(char cursor);
 
         private:
-            void changeTerminalMode(bool reset);
-            std::ostream& setTerminalCursor(std::ostream& stream);
             std::string getTextToPrint();
-            char _cursor = '>';
     };
 }
 

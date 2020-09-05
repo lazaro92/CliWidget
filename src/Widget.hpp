@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
 
 namespace CliWidget {
     
@@ -18,8 +19,12 @@ namespace CliWidget {
 
             virtual ~Widget() = default;
         protected:
+            void changeTerminalMode(bool reset);
+            std::ostream& setTerminalCursor(std::ostream& stream);
+
             std::vector<std::string> _options;
 		    std::vector<std::string>::size_type _index = 0;
+            char _cursor = '>';
     };
 }
 
