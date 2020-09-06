@@ -29,12 +29,10 @@ namespace CliWidget {
         if (!reset) {
             // disable printing of keys as they're pressed
             system("stty -echo");
-            system("tput civis");
 
             atexit([](){
                     //Reset the terminal to a sensible state
                     system("stty sane");
-                    system("tput cnorm");
                     });
 
             // Ensure clean exit to reset the terminal if the program is killed
@@ -42,7 +40,6 @@ namespace CliWidget {
         }
         else {
             system("stty sane");
-            system("tput cnorm");
         }
     }
 }
