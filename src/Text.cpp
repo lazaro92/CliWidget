@@ -2,9 +2,9 @@
 
 namespace CliWidget {
     Text::Text(const std::string &text): _text(text) {
-    
+
     }
-    
+
     void Text::setText(const std::string &text) {
         _text = text;
     }
@@ -17,7 +17,13 @@ namespace CliWidget {
         _bgrColor = color;
     }
 
+    void Text::setForegroundColor(CliWidget::ForegroundColor color) {
+        _fgrColor = color;
+    }
+
     std::ostream& Text::display(std::ostream &stream) {
-       return stream << "\033[" << _bgrColor << "m" << _text << "\033[0m" << std::endl;
+        return stream << "\033[" << _bgrColor << ";" << _fgrColor << "m" 
+            << _text 
+            << "\033[0m" << std::endl;
     }
 }

@@ -17,7 +17,7 @@ int main() {
     CliWidget::Text text2("Selected value is " + select.getSelectedValue() + "");
 
     text1.setBackgroundColor(CliWidget::BackgroundColor::GREEN);
-    text2.setBackgroundColor(CliWidget::BackgroundColor::BLUE);
+    text2.setForegroundColor(CliWidget::ForegroundColor::BLUE);
     text1.display(std::cout);
     text2.display(std::cout);
 

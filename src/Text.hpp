@@ -15,11 +15,13 @@ namespace CliWidget {
             void setText(const std::string &text);  
             std::string &getText(); 
             void setBackgroundColor(CliWidget::BackgroundColor color);
+            void setForegroundColor(CliWidget::ForegroundColor color);
             
             std::ostream& display(std::ostream &stream);
 
         private:
 		    std::string _text;
+            CliWidget::ForegroundColor _fgrColor = CliWidget::ForegroundColor::NONE;
             CliWidget::BackgroundColor _bgrColor = CliWidget::BackgroundColor::NONE;
     };
 }
