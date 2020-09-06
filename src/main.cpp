@@ -18,7 +18,12 @@ int main() {
 
     text1.setBackgroundColor(CliWidget::BackgroundColor::GREEN);
     text1.setForegroundColor(CliWidget::ForegroundColor::BLUE);
+    text1.setUnderline(true);
     text1.setBold(true);
+
+    text2.setItalic(true);
+    text2.setBlink(true);
+
     text1.display(std::cout);
     text2.display(std::cout);
 

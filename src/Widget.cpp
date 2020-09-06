@@ -4,10 +4,10 @@
 #include "Widget.hpp"
 
 namespace CliWidget {
-    
+
     Widget::Widget(const std::vector<std::string> &options) : _options(options)
     {
-   
+
     }
 
     void Widget::setOptions(const std::vector<std::string> &options) {
