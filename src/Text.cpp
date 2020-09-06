@@ -21,9 +21,19 @@ namespace CliWidget {
         _fgrColor = color;
     }
 
+    void Text::setBold(bool bold) {
+        _bold = bold;
+    }
+
     std::ostream& Text::display(std::ostream &stream) {
-        return stream << "\033[" << _bgrColor << ";" << _fgrColor << "m" 
-            << _text 
-            << "\033[0m" << std::endl;
+        if (_bgrColor != CliWidget::BackgroundColor::NONE)
+            stream << "\033[" << _bgrColor << "m";
+        if (_fgrColor != CliWidget::ForegroundColor::NONE)
+            stream << "\033[" << _fgrColor << "m";
+        if (_bold)
+            stream << "\033[" << "1m";
+        stream << _text << "\033[0m" << std::endl;
+
+        return stream;
     }
 }

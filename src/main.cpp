@@ -17,7 +17,8 @@ int main() {
     CliWidget::Text text2("Selected value is " + select.getSelectedValue() + "");
 
     text1.setBackgroundColor(CliWidget::BackgroundColor::GREEN);
-    text2.setForegroundColor(CliWidget::ForegroundColor::BLUE);
+    text1.setForegroundColor(CliWidget::ForegroundColor::BLUE);
+    text1.setBold(true);
     text1.display(std::cout);
     text2.display(std::cout);
 
@@ -48,6 +49,7 @@ int main() {
     inputPsw.display();
 
     CliWidget::Text textResult("The entered password is " + inputPsw.getValue());
+    textResult.setBold(true);
     textResult.display(std::cout);
 
     if (!inputPsw.check()) {
