@@ -1,5 +1,5 @@
-output: main.o Select.o MultiSelect.o Widget.o Text.o
-	g++ -g main.o Select.o MultiSelect.o Widget.o Text.o -o output 
+output: main.o Select.o MultiSelect.o Widget.o Text.o InputPassword.o
+	g++ -g main.o Select.o MultiSelect.o Widget.o Text.o InputPassword.o -o output 
 
 main.o: src/main.cpp
 	g++ -g -Wall -c src/main.cpp
@@ -15,6 +15,9 @@ Widget.o: src/Widget.cpp src/Widget.hpp
 
 Text.o: src/Text.cpp src/Text.hpp
 	g++ -g -Wall -c src/Text.cpp
+
+InputPassword.o: src/InputPassword.cpp src/InputPassword.hpp
+	g++ -g -Wall -c src/InputPassword.cpp
 
 clean:
 	rm *.o output

@@ -5,6 +5,7 @@
 #include "Select.hpp"
 #include "MultiSelect.hpp"
 #include "Text.hpp"
+#include "InputPassword.hpp"
 
 int main() {
 	CliWidget::Select select(std::vector<std::string> {"One", "Two", "Three"});
@@ -38,6 +39,14 @@ int main() {
 
     CliWidget::Text text4(strText4);
     text4.display(std::cout);
+    
+    CliWidget::Text textPwd("Insert a Password:");
+    CliWidget::InputPassword inputPsw;
+
+    textPwd.display(std::cout);
+    inputPsw.display();
+    CliWidget::Text textResult("The entered password is " + inputPsw.getValue());
+    textResult.display(std::cout);
 
 	return 0;
 }
