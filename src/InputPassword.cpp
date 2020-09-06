@@ -1,20 +1,28 @@
 #include <cstdlib>
 #include <csignal>
 #include <iostream>
+#include <regex>
 
 #include "InputPassword.hpp"
 
 namespace CliWidget {
 
     std::string InputPassword::getValue() {
-        return value;
+        return _value;
     }
 
-    
     void InputPassword::display() {
         changeTerminalMode(false);
-        getline(std::cin, value);
+        getline(std::cin, _value);
         changeTerminalMode(true);
+    }
+
+    bool InputPassword::check() {
+        return _regex.empty() || std::regex_match(_value, std::regex(_regex));
+    }
+
+    void InputPassword::setRegex(std::string regex) {
+        _regex = regex;
     }
 
     void InputPassword::changeTerminalMode(bool reset) {

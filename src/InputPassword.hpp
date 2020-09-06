@@ -8,10 +8,13 @@ namespace CliWidget {
         public:
             InputPassword() = default;
             std::string getValue();
+            void setRegex(std::string);
             void display();
-
+            bool check();
         private:
-            std::string value;
+            std::string _value;
+            std::string _regex;
+
             void changeTerminalMode(bool reset);
     };
 }
