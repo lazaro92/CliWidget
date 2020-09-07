@@ -20,20 +20,25 @@ namespace CliWidget {
     
     std::ostream& Select::display(std::ostream &stream) {
         unsigned int c = 'A';
+        bool arrowKeyPressed = false;
 
         changeTerminalMode(false);
         stream << getTextToPrint();
 
         do {
             c = std::cin.get();
-
-            if (c == 'A' && _index > 0) {
+            if (c == '[') {
+                arrowKeyPressed = true;
+            }
+            else if (c == 'A' && _index > 0 && arrowKeyPressed) {
                 --_index;
+                arrowKeyPressed = false;
                 setTerminalCursor(stream);
                 stream << getTextToPrint();
             }
-            else if (c == 'B' && _index < _options.size() -1) {
+            else if (c == 'B' && (_index < _options.size() -1) && arrowKeyPressed) {
                 ++_index;
+                arrowKeyPressed = false; 
                 setTerminalCursor(stream);
                 stream << getTextToPrint();
             }
