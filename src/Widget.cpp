@@ -19,7 +19,7 @@ namespace CliWidget {
     }
 
 
-    void Widget::addOption(std::string &option) {
+    void Widget::addOption(const std::string &option) {
         _options.push_back(option);
     }
 

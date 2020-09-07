@@ -15,6 +15,9 @@ namespace CliWidget {
            std::vector<std::string> getSelectedValues();
            std::ostream& display(std::ostream &stream);
 
+           void addOption(const std::string &option) override;
+           void removeOption(unsigned int i) override;
+           
        private:
 	       std::vector<bool> _boolIndexes;
 

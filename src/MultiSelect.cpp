@@ -68,6 +68,16 @@ namespace CliWidget {
         return stream << std::endl;
     }
 
+    void MultiSelect::addOption(const std::string &option) {
+        _options.push_back(option);
+        _boolIndexes.push_back(false);
+    }
+
+    void MultiSelect::removeOption(unsigned int i) {
+        _options.erase(_options.begin() + i);
+        _boolIndexes.erase(_boolIndexes.begin() + i);
+    }
+
     std::string MultiSelect::getTextToPrint() {
         std::string text = ""; 
 

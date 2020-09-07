@@ -14,8 +14,8 @@ namespace CliWidget {
             void setOptions(const std::vector<std::string> &options);
             std::vector<std::string> &getOptions();
             
-            void addOption(std::string &option);
-            void removeOption(unsigned int i);
+            virtual void addOption(const std::string &option);
+            virtual void removeOption(unsigned int i);
 
             virtual ~Widget() = default;
         protected:
