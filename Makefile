@@ -1,23 +1,34 @@
-output: main.o Select.o MultiSelect.o List.o Text.o InputPassword.o
-	g++ -g main.o Select.o MultiSelect.o List.o Text.o InputPassword.o -o output 
+### variables ##############
+
+CXX      = g++
+CXXFLAGS = -g -Wall
+OBJECTS  = main.o Select.o MultiSelect.o List.o Text.o InputPassword.o
+
+########################### 
+
+output: $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o output $(OBJECTS) 
 
 main.o: src/main.cpp
-	g++ -g -Wall -c src/main.cpp
+	$(CXX) $(CXXFLAGS) -c src/main.cpp
 
 Select.o: src/Select.cpp src/Select.hpp
-	g++ -g -Wall -c src/Select.cpp
+	$(CXX) $(CXXFLAGS) -c src/Select.cpp
 
 MultiSelect.o: src/MultiSelect.cpp src/MultiSelect.hpp
-	g++ -g -Wall -c src/MultiSelect.cpp
+	$(CXX) $(CXXFLAGS) -c src/MultiSelect.cpp
 
 List.o: src/List.cpp src/List.hpp
-	g++ -g -Wall -c src/List.cpp
+	$(CXX) $(CXXFLAGS) -c src/List.cpp
 
 Text.o: src/Text.cpp src/Text.hpp
-	g++ -g -Wall -c src/Text.cpp
+	$(CXX) $(CXXFLAGS) -c src/Text.cpp
 
 InputPassword.o: src/InputPassword.cpp src/InputPassword.hpp
-	g++ -g -Wall -c src/InputPassword.cpp
+	$(CXX) $(CXXFLAGS) -c src/InputPassword.cpp
 
+# To prevent make from getting confused by an actual file called clean, me may use .PHONY:
+# The "-" in -rm causes make to continue in spite of errors from rm
+.PHONY: clean
 clean:
-	rm *.o output
+	-rm $(OBJECTS) output
