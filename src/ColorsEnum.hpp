@@ -1,3 +1,10 @@
+/**
+ColorsEnum: contains the enums for the terminal colors
+@file ColorsEnum.hpp
+@author Albert Lazaro de Lara
+@version 0.1 11/09/20 
+*/
+
 #ifndef COLORS_HPP
 #define COLORS_HPP
 
@@ -6,6 +13,9 @@
 
 namespace CliWidget {
 
+    /**
+      enum class for the foreground color.
+      */
     enum class ForegroundColor {
         NONE    = 0,
         BLACK   = 30,
@@ -18,10 +28,16 @@ namespace CliWidget {
         WHITE   = 37
     };
 
+    /**
+      output the foreground color value.
+      */
     inline std::ostream& operator << (std::ostream& os, const ForegroundColor& fColor){
-       return os << static_cast<int>(fColor); 
+        return os << static_cast<int>(fColor); 
     }
 
+    /**
+      enum class for the background color.
+      */
     enum class BackgroundColor {
         NONE    = 0,
         BLACK   = 40,
@@ -34,8 +50,11 @@ namespace CliWidget {
         WHITE   = 47
     };
 
+    /**
+      output the background color value.
+      */
     inline std::ostream& operator << (std::ostream& os, const BackgroundColor& bColor){
-       return os << static_cast<int>(bColor);
+        return os << static_cast<int>(bColor);
     }
 }
 

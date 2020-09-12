@@ -1,33 +1,40 @@
+/**
+  List: contains the implementation of the class List
+  @file List.cpp
+  @author Albert Lazaro de Lara
+  @version 0.1 11/09/20 
+  */
+
 #include <cstdlib>
 #include <csignal>
 
-#include "Widget.hpp"
+#include "List.hpp"
 
 namespace CliWidget {
 
-    Widget::Widget(const std::vector<std::string> &options) : _options(options)
+    List::List(const std::vector<std::string> &options) : _options(options)
     {
 
     }
 
-    void Widget::setOptions(const std::vector<std::string> &options) {
+    void List::setOptions(const std::vector<std::string> &options) {
         _options = options;
     }
 
-    std::vector<std::string>& Widget::getOptions() {
+    std::vector<std::string>& List::getOptions() {
         return _options;
     }
 
 
-    void Widget::addOption(const std::string &option) {
+    void List::addOption(const std::string &option) {
         _options.push_back(option);
     }
 
-    void Widget::removeOption(unsigned int i) {
-        _options.erase(_options.begin() + i);
+    void List::removeOption(unsigned int index) {
+        _options.erase(_options.begin() + index);
     }
 
-    void Widget::changeTerminalMode(bool reset) {
+    void List::changeTerminalMode(bool reset) {
         if (!reset) {
             // Disable special processing of characters (e.g. delete line) and set the minimum number read to 1
             // disable printing of keys as they're pressed
@@ -49,7 +56,7 @@ namespace CliWidget {
         }
     }
 
-    std::ostream& Widget::setTerminalCursor(std::ostream &stream) {
+    std::ostream& List::setTerminalCursor(std::ostream &stream) {
         return stream << "\033[" << _options.size() << "A\033[99D";
     }
 }

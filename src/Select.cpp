@@ -1,8 +1,15 @@
+/**
+  Select widget: contains the implementation of the class Select 
+  @file Select.cpp
+  @author Albert Lazaro de Lara
+  @version 0.1 11/09/20 
+  */
+
 #include "Select.hpp"
 
 namespace CliWidget {
 
-    Select::Select(const std::vector<std::string> &options) : Widget(options) {
+    Select::Select(const std::vector<std::string> &options) : List(options) {
     
     }
 

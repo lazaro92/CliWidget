@@ -1,3 +1,10 @@
+/**
+  Text widget: contains the implementation of the class Text
+  @file Text.hpp
+  @author Albert Lazaro de Lara
+  @version 0.1 11/09/20 
+  */
+
 #include "Text.hpp"
 
 namespace CliWidget {
@@ -21,20 +28,20 @@ namespace CliWidget {
         _fgrColor = color;
     }
 
-    void Text::setBold(bool bold) {
-        _bold = bold;
+    void Text::setBold(bool enable) {
+        _bold = enable;
     }
 
-    void Text::setUnderline(bool underline) {
-        _underline = underline;
+    void Text::setUnderline(bool enable) {
+        _underline = enable;
     }
 
-    void Text::setBlink(bool blink) {
-        _blink = blink;
+    void Text::setBlink(bool enable) {
+        _blink = enable;
     }
 
-    void Text::setItalic(bool italic) {
-        _italic = italic;
+    void Text::setItalic(bool enable) {
+        _italic = enable;
     }
 
     std::ostream& Text::display(std::ostream &stream) {

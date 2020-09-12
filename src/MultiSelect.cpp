@@ -1,8 +1,15 @@
+/**
+  Multi Select widget: contains the implementation of the class MultiSelect 
+  @file MultiSelect.cpp
+  @author Albert Lazaro de Lara
+  @version 0.1 11/09/20 
+  */
+
 #include "MultiSelect.hpp"
 
 namespace CliWidget {
 
-    MultiSelect::MultiSelect(const std::vector<std::string> &options) : Widget(options){
+    MultiSelect::MultiSelect(const std::vector<std::string> &options) : List(options){
         _boolIndexes = std::vector<bool> (options.size(), false);
     }
 
@@ -73,9 +80,9 @@ namespace CliWidget {
         _boolIndexes.push_back(false);
     }
 
-    void MultiSelect::removeOption(unsigned int i) {
-        _options.erase(_options.begin() + i);
-        _boolIndexes.erase(_boolIndexes.begin() + i);
+    void MultiSelect::removeOption(unsigned int index) {
+        _options.erase(_options.begin() + index);
+        _boolIndexes.erase(_boolIndexes.begin() + index);
     }
 
     std::string MultiSelect::getTextToPrint() {

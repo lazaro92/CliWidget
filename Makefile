@@ -1,5 +1,5 @@
-output: main.o Select.o MultiSelect.o Widget.o Text.o InputPassword.o
-	g++ -g main.o Select.o MultiSelect.o Widget.o Text.o InputPassword.o -o output 
+output: main.o Select.o MultiSelect.o List.o Text.o InputPassword.o
+	g++ -g main.o Select.o MultiSelect.o List.o Text.o InputPassword.o -o output 
 
 main.o: src/main.cpp
 	g++ -g -Wall -c src/main.cpp
@@ -10,8 +10,8 @@ Select.o: src/Select.cpp src/Select.hpp
 MultiSelect.o: src/MultiSelect.cpp src/MultiSelect.hpp
 	g++ -g -Wall -c src/MultiSelect.cpp
 
-Widget.o: src/Widget.cpp src/Widget.hpp
-	g++ -g -Wall -c src/Widget.cpp
+List.o: src/List.cpp src/List.hpp
+	g++ -g -Wall -c src/List.cpp
 
 Text.o: src/Text.cpp src/Text.hpp
 	g++ -g -Wall -c src/Text.cpp
