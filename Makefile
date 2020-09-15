@@ -1,10 +1,11 @@
 ### variables ##############
 
-CXX      = g++
-CXXFLAGS = -g -Wall
-OBJECTS  = main.o Select.o MultiSelect.o List.o Text.o InputPassword.o
+CXX        = g++
+CXXFLAGS   = -g -Wall -fpic
+OBJECTS    = main.o Select.o MultiSelect.o List.o Text.o InputPassword.o
+LIBRARYOBJ = Select.o MultiSelect.o List.o Text.o InputPassword.o
 
-########################### 
+############################ 
 
 output: $(OBJECTS)
 	$(CXX) $(CXXFLAGS) -o output $(OBJECTS) 
@@ -27,8 +28,18 @@ Text.o: src/Text.cpp src/Text.hpp
 InputPassword.o: src/InputPassword.cpp src/InputPassword.hpp
 	$(CXX) $(CXXFLAGS) -c src/InputPassword.cpp
 
+############################
+
+static: $(LIBRARYOBJ)
+	ar -rs libCliWidgets.a $(LIBRARYOBJ)
+
+dynamic: $(LIBRARYOBJ)
+	$(CXX) -shared -o libCliWidgets.so $(LIBRARYOBJ)
+
+############################
+
 # To prevent make from getting confused by an actual file called clean, me may use .PHONY:
 # The "-" in -rm causes make to continue in spite of errors from rm
 .PHONY: clean
 clean:
-	-rm $(OBJECTS) output
+	-rm $(OBJECTS) output libCliWidgets.a libCliWidgets.so
