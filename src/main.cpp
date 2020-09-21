@@ -11,7 +11,7 @@ int main() {
     CliWidget::Select select(std::vector<std::string> {"One", "Two", "Three"});
     CliWidget::MultiSelect multiSelect(std::vector<std::string>{"Cat", "Dog", "Hamster", "Bird", "Fish"});
 
-    select.display(std::cout);
+    select.display();
 
     CliWidget::Text text1("Selected index is " + std::to_string(select.getSelectedIndex()) + "");
     CliWidget::Text text2("Selected value is " + select.getSelectedValue() + "");
@@ -24,10 +24,10 @@ int main() {
     text2.setItalic(true);
     text2.setBlink(true);
 
-    text1.display(std::cout);
-    text2.display(std::cout);
+    text1.display();
+    text2.display();
 
-    multiSelect.display(std::cout);
+    multiSelect.display();
 
     std::string strText3 = "Selected indexes are ";
     std::string strText4 = "Selected values are ";
@@ -41,25 +41,25 @@ int main() {
     }
 
     CliWidget::Text text3(strText3);
-    text3.display(std::cout);
+    text3.display();
 
     CliWidget::Text text4(strText4);
-    text4.display(std::cout);
+    text4.display();
 
     CliWidget::Text textPwd("Insert a Password:");
     CliWidget::InputPassword inputPsw;
     inputPsw.setRegex("^.{6,}");
 
-    textPwd.display(std::cout);
+    textPwd.display();
     inputPsw.display();
 
     CliWidget::Text textResult("The entered password is " + inputPsw.getValue());
     textResult.setBold(true);
-    textResult.display(std::cout);
+    textResult.display();
 
     if (!inputPsw.check()) {
         CliWidget::Text textResult("The entered password is short");
-        textResult.display(std::cout);
+        textResult.display();
     }
 
     return 0;

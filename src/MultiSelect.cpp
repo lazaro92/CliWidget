@@ -41,12 +41,12 @@ namespace CliWidget {
         return values;
     }
 
-    std::ostream& MultiSelect::display(std::ostream &stream) {
+    void MultiSelect::display() {
         unsigned int c = 'A';
         bool arrowKeyPressed = false;
 
         changeTerminalMode(false);
-        stream << getTextToPrint();
+        std::cout << getTextToPrint();
 
         do {
             c = std::cin.get();
@@ -56,23 +56,22 @@ namespace CliWidget {
             else if (c == 'A' && _index > 0 && arrowKeyPressed) {
                 --_index;
                 arrowKeyPressed = false;
-                setTerminalCursor(stream);
-                stream << getTextToPrint();
+                setTerminalCursor(std::cout);
+                std::cout << getTextToPrint();
             }
             else if (c == 'B' && (_index < _options.size() -1) && arrowKeyPressed) {
                 ++_index;
                 arrowKeyPressed = false;
-                setTerminalCursor(stream);
-                stream << getTextToPrint();
+                setTerminalCursor(std::cout);
+                std::cout << getTextToPrint();
             }
             else if (c == ' ') {
                 _boolIndexes.at(_index) = !_boolIndexes.at(_index);
-                setTerminalCursor(stream);
-                stream << getTextToPrint();
+                setTerminalCursor(std::cout);
+                std::cout << getTextToPrint();
             }
         } while(c != '\n');
         changeTerminalMode(true);
-        return stream << std::endl;
     }
 
     void MultiSelect::addOption(const std::string &option) {

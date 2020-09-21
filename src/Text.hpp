@@ -79,7 +79,7 @@ namespace CliWidget {
               @param stream The stream to output the widget
               @return the stream passed by parameter
               */
-            std::ostream& display(std::ostream &stream);
+            void display();
 
         private:
             /**

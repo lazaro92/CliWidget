@@ -43,7 +43,7 @@ namespace CliWidget {
               @param stream The stream to output the widget
               @return the stream passed by parameter
               */
-            std::ostream& display(std::ostream &stream) override;
+            void display() override;
 
             /**
               Adds an option to the options vector

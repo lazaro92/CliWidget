@@ -43,7 +43,7 @@ namespace CliWidget {
               @param stream The stream to output the widget
               @return the stream passed by parameter
               */
-            std::ostream& display(std::ostream &stream) override;
+            void display() override;
 
             /**
               set the cursor character to distinct the current option where the user is
@@ -53,7 +53,7 @@ namespace CliWidget {
 
         private:
             /**
-              Return the options in a string format and the current option under the cursor 
+              Return the options in a string format and the current option under the cursor
               @return the options in string format
               */
             std::string getTextToPrint();

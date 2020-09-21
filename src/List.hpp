@@ -55,7 +55,7 @@ namespace CliWidget {
               @param stream The stream to output the widget
               @return the stream passed by parameter
               */
-            virtual std::ostream& display(std::ostream &stream) = 0;
+            virtual void display() = 0;
 
             /**
               Default destructor (inheritance)

@@ -47,7 +47,7 @@ text.setBold(true);
 text.setItalic(true);
 text.setBlink(true);
 
-text.display(std::cout);
+text.display();
 ```
 
 ![Different Text format gif](https://i.imgur.com/jjiLuHP.gif "Different Text format gif")
@@ -66,16 +66,16 @@ CliWidget::Text textPwd("Insert a Password:");
 CliWidget::InputPassword inputPsw;
 inputPsw.setRegex("^.{6,}");
 
-textPwd.display(std::cout);
+textPwd.display();
 inputPsw.display();
 
 CliWidget::Text textResult("The entered password is " + inputPsw.getValue());
 textResult.setBold(true);
-textResult.display(std::cout);
+textResult.display();
 
 if (!inputPsw.check()) {
     CliWidget::Text textResult("The entered password is short");
-    textResult.display(std::cout);
+    textResult.display();
 }   
 ```
 
@@ -92,13 +92,13 @@ Example:
 #include "Text.hpp"
 
 CliWidget::Select select(std::vector<std::string> {"One", "Two", "Three"});
-select.display(std::cout);
+select.display();
  
 CliWidget::Text text1("Selected index is " + std::to_string(select.getSelectedIndex()) + "");
 CliWidget::Text text2("Selected value is " + select.getSelectedValue());
 
-text1.display(std::cout);
-text2.display(std::cout);
+text1.display();
+text2.display();
 ```
 
 ![Select gif](https://i.imgur.com/Caki9XJ.gif "Select")
@@ -114,7 +114,7 @@ Example:
 #include "Text.hpp"
 
 CliWidget::MultiSelect multiSelect(std::vector<std::string>{"Cat", "Dog", "Hamster", "Bird", "Fish"});
-multiSelect.display(std::cout);
+multiSelect.display();
 
 std::string strText3 = "Selected indexes are ";
 std::string strText4 = "Selected values are ";
