@@ -18,8 +18,8 @@ For the moment it only works on Linux, not tested in Windows.
 ## Compile
 
 For compiling the library I have created two commands in Makefile:
-* **make static**: creates the static library (.a)
-* **make dynamic**: creates the dynamic library (.so)
+* `make static`: creates the static library (.a)
+* `make dynamic`: creates the dynamic library (.so)
 
 ## Widgets
 
