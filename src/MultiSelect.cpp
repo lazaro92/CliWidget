@@ -85,7 +85,12 @@ namespace CliWidget {
     }
 
     std::string MultiSelect::getTextToPrint() {
-        std::string text = ""; 
+        std::string text = "", bgBegin = "", bgEnd ="";
+
+        if (_bgColor != CliWidget::BackgroundColor::NONE) {
+            bgBegin = "\033[" + _bgColor + "m";
+            bgEnd = "\033[0m";
+        }
 
         std::vector<std::string>::size_type i = 0;
         while (i < _options.size()) {
@@ -95,7 +100,7 @@ namespace CliWidget {
                 text += "-";
 
             if (i == _index) 
-                text += std::string("\033[41m") + _cursor + " " + _options.at(i) + "\033[0m\n";
+                text += bgBegin + _cursor + " " + _options.at(i) + bgEnd + "\n";
             else 
                 text += "  " + _options.at(i) + "\n";
             ++i;

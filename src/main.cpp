@@ -11,6 +11,7 @@ int main() {
     CliWidget::Select select(std::vector<std::string> {"One", "Two", "Three"});
     CliWidget::MultiSelect multiSelect(std::vector<std::string>{"Cat", "Dog", "Hamster", "Bird", "Fish"});
 
+    select.setBackgroundColor(CliWidget::BackgroundColor::GREEN);
     select.display();
 
     CliWidget::Text text1("Selected index is " + std::to_string(select.getSelectedIndex()) + "");
@@ -27,6 +28,7 @@ int main() {
     text1.display();
     text2.display();
 
+    multiSelect.setBackgroundColor(CliWidget::BackgroundColor::BLUE);
     multiSelect.display();
 
     std::string strText3 = "Selected indexes are ";

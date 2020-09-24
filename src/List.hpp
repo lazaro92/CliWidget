@@ -12,6 +12,8 @@ List: contains the definition of the class List
 #include <string>
 #include <iostream>
 
+#include "ColorsEnum.hpp"
+
 namespace CliWidget {
 
     /**
@@ -51,6 +53,12 @@ namespace CliWidget {
             virtual void removeOption(unsigned int index);
 
             /**
+              Set the bacground color for the current position
+              @param bgColor The color
+              */
+            void setBackgroundColor(CliWidget::BackgroundColor bgColor);
+
+            /**
               Display the widget in the terminal and lets the user to navigate between the options and select one of them
               */
             virtual void display() = 0;
@@ -59,6 +67,7 @@ namespace CliWidget {
               Default destructor (inheritance)
               */
             virtual ~List() = default;
+
         protected:
 
             /**
@@ -86,6 +95,11 @@ namespace CliWidget {
               the cursor to indicate to the user the focused option
               */
             char _cursor = '>';
+
+            /**
+              The background color
+              */
+            CliWidget::BackgroundColor _bgColor = CliWidget::BackgroundColor::NONE;
     };
 }
 
