@@ -52,8 +52,6 @@ namespace CliWidget {
 
             /**
               Display the widget in the terminal and lets the user to navigate between the options and select one of them
-              @param stream The stream to output the widget
-              @return the stream passed by parameter
               */
             virtual void display() = 0;
 

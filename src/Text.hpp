@@ -76,8 +76,6 @@ namespace CliWidget {
 
             /**
               Display the widget in the terminal, showing the text in it
-              @param stream The stream to output the widget
-              @return the stream passed by parameter
               */
             void display();
 
