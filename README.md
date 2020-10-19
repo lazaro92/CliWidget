@@ -3,7 +3,7 @@ Widgets for using in C++ terminal
 
 ## What it is?
 
-CliWidgets are a serie of widgets to use in the terminal, with the idea to help programmers to build easy menus or inputs / outputs that users will use to interactue with the application.
+CliWidgets are a series of widgets to use in the terminal, with the idea to help programmers to build easy menus or inputs/outputs that users will use to interact with the application.
 
 ## Requirements
 
