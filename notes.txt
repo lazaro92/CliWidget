@@ -1,7 +1,0 @@
-Select:
-✔️ Pass the code to Select.cpp.
-✔️ Overwrite lines.
-✔️ Set terminal config to default.
-- Function to set backgorund color.
-- Function to set text color.
-- Enum with different terminal colors.
