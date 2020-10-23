@@ -33,3 +33,6 @@
 
 #cmake genereated build directory
 /build
+
+# Visual Studio files
+/.vs
