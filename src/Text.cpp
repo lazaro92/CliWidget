@@ -44,21 +44,19 @@ namespace CliWidget {
         _italic = enable;
     }
 
-    std::ostream& Text::display(std::ostream &stream) {
+    void Text::display() {
         if (_bgrColor != CliWidget::BackgroundColor::NONE)
-            stream << "\033[" << _bgrColor << "m";
+            std::cout << "\033[" << _bgrColor << "m";
         if (_fgrColor != CliWidget::ForegroundColor::NONE)
-            stream << "\033[" << _fgrColor << "m";
+            std::cout << "\033[" << _fgrColor << "m";
         if (_bold)
-            stream << "\033[" << "1m";
+            std::cout << "\033[" << "1m";
         if (_underline)
-            stream << "\033[" << "4m";
+            std::cout << "\033[" << "4m";
         if (_blink)
-            stream << "\033[" << "5m";
+            std::cout << "\033[" << "5m";
         if (_italic)
-            stream << "\033[" << "3m";
-        stream << _text << "\033[0m" << std::endl;
-
-        return stream;
+            std::cout << "\033[" << "3m";
+        std::cout << _text << "\033[0m" << std::endl;
     }
 }

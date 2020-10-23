@@ -25,12 +25,12 @@ namespace CliWidget {
         _cursor = cursor;
     }
     
-    std::ostream& Select::display(std::ostream &stream) {
+    void Select::display() {
         unsigned int c = 'A';
         bool arrowKeyPressed = false;
 
         changeTerminalMode(false);
-        stream << getTextToPrint();
+        std::cout << getTextToPrint();
 
         do {
             c = std::cin.get();
@@ -40,29 +40,32 @@ namespace CliWidget {
             else if (c == 'A' && _index > 0 && arrowKeyPressed) {
                 --_index;
                 arrowKeyPressed = false;
-                setTerminalCursor(stream);
-                stream << getTextToPrint();
+                setTerminalCursor(std::cout);
+                std::cout << getTextToPrint();
             }
             else if (c == 'B' && (_index < _options.size() -1) && arrowKeyPressed) {
                 ++_index;
                 arrowKeyPressed = false; 
-                setTerminalCursor(stream);
-                stream << getTextToPrint();
+                setTerminalCursor(std::cout);
+                std::cout << getTextToPrint();
             }
         } while(c != '\n');
 
-
         changeTerminalMode(true);
-        return stream << std::endl;
     }
 
     std::string Select::getTextToPrint() {
-        std::string text = ""; 
+        std::string text = "", bgBegin = "", bgEnd ="";
 
+        if (_bgColor != CliWidget::BackgroundColor::NONE) {
+            bgBegin = "\033[" + _bgColor + "m";
+            bgEnd = "\033[0m";
+        }
+        
         std::vector<std::string>::size_type i = 0;
         while (i < _options.size()) {
             if (i == _index) {
-                text += std::string("\033[41m") + _cursor + " " + _options.at(i) + "\033[0m\n";
+                text += bgBegin +_cursor + " " + _options.at(i) + bgEnd + "\n";
             }
             else {
                 text += "  " + _options.at(i) + "\n";

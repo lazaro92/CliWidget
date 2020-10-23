@@ -31,8 +31,8 @@ namespace CliWidget {
     /**
       output the foreground color value.
       */
-    inline std::ostream& operator << (std::ostream& os, const ForegroundColor& fColor){
-        return os << static_cast<int>(fColor); 
+    inline std::ostream& operator<< (std::ostream& os, const ForegroundColor& fgColor){
+        return os << static_cast<int>(fgColor); 
     }
 
     /**
@@ -53,8 +53,12 @@ namespace CliWidget {
     /**
       output the background color value.
       */
-    inline std::ostream& operator << (std::ostream& os, const BackgroundColor& bColor){
-        return os << static_cast<int>(bColor);
+    inline std::ostream& operator<< (std::ostream& os, const BackgroundColor& bgColor){
+        return os << static_cast<int>(bgColor);
+    }
+
+    inline std::string operator+ (std::string str, const BackgroundColor& bgColor) {
+        return str + std::to_string(static_cast<int>(bgColor));
     }
 }
 
