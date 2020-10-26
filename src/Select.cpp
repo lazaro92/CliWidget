@@ -5,6 +5,10 @@
   @version 0.1 11/09/20 
   */
 
+#if defined(_WIN32) || defined(_WIN64)
+#include <windows.h>
+#endif
+
 #include "Select.hpp"
 
 namespace CliWidget {
@@ -25,7 +29,56 @@ namespace CliWidget {
         _cursor = cursor;
     }
     
+    // TODO improve Windows code 
     void Select::display() {
+#if defined(_WIN32) || defined(_WIN64)
+        DWORD count;
+        WORD  result;
+        INPUT_RECORD inrec;
+        
+        if (changeTerminalMode(false) == '\0') {
+            // TODO controle this (not connected to cmd)
+            return;
+        }
+
+        std::string textToPrint = getTextToPrint();
+        HANDLE hstdin = GetStdHandle(STD_INPUT_HANDLE);
+
+        WriteConsole(
+            GetStdHandle(STD_OUTPUT_HANDLE),
+            textToPrint.c_str(),
+            textToPrint.length()+1,
+            &count,
+            NULL
+        );
+        FlushConsoleInputBuffer(hstdin);
+
+        do {
+            /* Wait for and get a single key PRESS */
+            do ReadConsoleInput(hstdin, &inrec, 1, &count);
+            while ((inrec.EventType != KEY_EVENT) || !inrec.Event.KeyEvent.bKeyDown);
+
+            /* Remember which key the user pressed */
+            result = inrec.Event.KeyEvent.wVirtualKeyCode;
+
+            /* Wait for and get a single key RELEASE */
+            do ReadConsoleInput(hstdin, &inrec, 1, &count);
+            while ((inrec.EventType != KEY_EVENT) || inrec.Event.KeyEvent.bKeyDown);
+            
+            if (result == VK_UP && _index > 0) {
+                --_index;
+                setTerminalCursor(std::cout);
+                std::cout << getTextToPrint();
+            }
+            else if (result == VK_DOWN && (_index < _options.size() - 1)) {
+                ++_index;
+                setTerminalCursor(std::cout);
+                std::cout << getTextToPrint();
+            }
+        } while (result != VK_RETURN);
+
+        changeTerminalMode(true);
+#else
         unsigned int c = 'A';
         bool arrowKeyPressed = false;
 
@@ -52,6 +105,7 @@ namespace CliWidget {
         } while(c != '\n');
 
         changeTerminalMode(true);
+#endif
     }
 
     std::string Select::getTextToPrint() {

@@ -12,6 +12,10 @@ List: contains the definition of the class List
 #include <string>
 #include <iostream>
 
+#if defined(_WIN32) || defined(_WIN64)
+#include <windows.h>
+#endif
+
 #include "ColorsEnum.hpp"
 
 namespace CliWidget {
@@ -74,7 +78,11 @@ namespace CliWidget {
               Hide the terminal input and the cursor.
               @param reset If true reset the terminal to default, else hides the input and the cursor
              **/
+#if defined(_WIN32) || defined(_WIN64)
+            char changeTerminalMode(bool reset);
+#else
             void changeTerminalMode(bool reset);
+#endif
 
             /**
               Sets the terminal cursor to the first character written by the widget for replacing it
@@ -100,6 +108,23 @@ namespace CliWidget {
               The background color
               */
             CliWidget::BackgroundColor _bgColor = CliWidget::BackgroundColor::NONE;
+
+#if defined(_WIN32) || defined(_WIN64)
+            // TODO write -static const KEY_UP KEY_DOWN-
+            static const int KEY_UP = 65;
+            static const int KEY_DOWN = 66;
+            static const int KEY_SPACE = 32;
+
+        private:
+            HANDLE    hstdin;
+            DWORD     mode;
+
+#else
+            // TODO write -static const KEY_UP KEY_DOWN-
+            static const int KEY_UP = 65;
+            static const int KEY_DOWN = 66;
+            static const int KEY_SPACE = 32;
+#endif
     };
 }
 
