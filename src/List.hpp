@@ -110,20 +110,15 @@ namespace CliWidget {
             CliWidget::BackgroundColor _bgColor = CliWidget::BackgroundColor::NONE;
 
 #if defined(_WIN32) || defined(_WIN64)
-            // TODO write -static const KEY_UP KEY_DOWN-
-            static const int KEY_UP = 65;
-            static const int KEY_DOWN = 66;
-            static const int KEY_SPACE = 32;
-
         private:
             HANDLE    hstdin;
             DWORD     mode;
-
 #else
             // TODO write -static const KEY_UP KEY_DOWN-
             static const int KEY_UP = 65;
             static const int KEY_DOWN = 66;
             static const int KEY_SPACE = 32;
+            static const int KEY_ENTER = 13;
 #endif
     };
 }

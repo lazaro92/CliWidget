@@ -79,7 +79,7 @@ namespace CliWidget {
 
         changeTerminalMode(true);
 #else
-        unsigned int c = 'A';
+        unsigned int c;
         bool arrowKeyPressed = false;
 
         changeTerminalMode(false);
@@ -90,19 +90,19 @@ namespace CliWidget {
             if (c == '[') {
                 arrowKeyPressed = true;
             }
-            else if (c == 'A' && _index > 0 && arrowKeyPressed) {
+            else if (c == KEY_UP && _index > 0 && arrowKeyPressed) {
                 --_index;
                 arrowKeyPressed = false;
                 setTerminalCursor(std::cout);
                 std::cout << getTextToPrint();
             }
-            else if (c == 'B' && (_index < _options.size() -1) && arrowKeyPressed) {
+            else if (c == KEY_DOWN && (_index < _options.size() -1) && arrowKeyPressed) {
                 ++_index;
                 arrowKeyPressed = false; 
                 setTerminalCursor(std::cout);
                 std::cout << getTextToPrint();
             }
-        } while(c != '\n');
+        } while(c != KEY_ENTER);
 
         changeTerminalMode(true);
 #endif
