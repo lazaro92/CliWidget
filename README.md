@@ -25,17 +25,17 @@ For compiling the library I have created two commands in Makefile:
 
 ### Text
 
-A simple output text to display a text. A format can be aplied to it, enabling the next formats:
+A simple output text to display a text. A format can be applied to it, enabling the next formats:
 * Bold.
 * Underline.
 * Italic.
 * Blink.
-* Foreground color: sets the terminal forground color, using a color defined in the *ForegroundColor* Enum.
-* Background color: sets the terminal backgroud color, using a color defined in the *BackgroundColor* Enum.
+* Foreground color: sets the terminal foreground color, using a color defined in the *ForegroundColor* Enum.
+* Background color: sets the terminal background color, using a color defined in the *BackgroundColor* Enum.
 
 Example:
 
-```
+```cpp
 #include "Text.hpp"
 
 CliWidget::Text text("Hello World");
@@ -58,7 +58,7 @@ A password input that hides the input when users are writting hteir passwords li
 
 Example of input password and a regex to validate that it's length is 6 characters or more:
 
-```
+```cpp
 #include "Text.hpp"
 #include "InputPassword.hpp"
 
@@ -87,7 +87,7 @@ This widget display a set of options. The user can navigate through them with up
 
 Example:
 
-```
+```cpp
 #include "Select.hpp"
 #include "Text.hpp"
 
@@ -109,7 +109,7 @@ This widget is like the select, with the difference that the user can select mor
 
 Example:
 
-```
+```cpp
 #include "MultiSelect.hpp"
 #include "Text.hpp"
 
