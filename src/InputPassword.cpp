@@ -5,8 +5,11 @@
   @version 0.1 11/09/20 
   */
 
+#if !defined(_WIN32) || !defined(_WIN64)
 #include <cstdlib>
 #include <csignal>
+#endif
+
 #include <iostream>
 #include <regex>
 
@@ -33,6 +36,16 @@ namespace CliWidget {
     }
 
     void InputPassword::changeTerminalMode(bool reset) {
+#if defined(_WIN32) || defined(_WIN64)
+        hstdin = GetStdHandle(STD_INPUT_HANDLE);
+        if (!reset) {
+            GetConsoleMode(hstdin, &mode);
+            SetConsoleMode(hstdin, mode & ~ENABLE_ECHO_INPUT);
+        }
+        else {
+            SetConsoleMode(hstdin, mode);
+        }
+#else
         if (!reset) {
             // disable printing of keys as they're pressed
             system("stty -echo");
@@ -49,5 +62,6 @@ namespace CliWidget {
         else {
             system("stty sane");
         }
+#endif
     }
 }

@@ -8,6 +8,9 @@
 #ifndef INPUT_PASSWORD
 #define INPUT_PASSWORD
 
+#if defined(_WIN32) || defined(_WIN64)
+#include <windows.h>
+#endif
 #include <string>
 
 namespace CliWidget {
@@ -57,6 +60,12 @@ namespace CliWidget {
               @param reset If true reset the terminal to default, else hides the input and the cursor
              **/
             void changeTerminalMode(bool reset);
+
+#if defined(_WIN32) || defined(_WIN64)
+        private:
+            HANDLE    hstdin;
+            DWORD     mode;
+#endif
     };
 }
 
