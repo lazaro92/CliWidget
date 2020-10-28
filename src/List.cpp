@@ -61,21 +61,18 @@ namespace CliWidget {
         if (!reset) {
             // Disable special processing of characters (e.g. delete line) and set the minimum number read to 1
             // disable printing of keys as they're pressed
-            system("stty cbreak min 1 -echo");
-            system("tput civis");
+            system("stty cbreak min 1 -echo; tput civis");
 
             atexit([]() {
                 //Reset the terminal to a sensible state
-                system("stty sane");
-                system("tput cnorm");
+                system("stty sane; tput cnorm");
                 });
 
             // Ensure clean exit to reset the terminal if the program is killed
             signal(SIGTERM, [](int) {exit(1); });
         }
         else {
-            system("stty sane");
-            system("tput cnorm");
+            system("stty sane; tput cnorm");
         }
     }
 #endif
