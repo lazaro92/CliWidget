@@ -7,19 +7,29 @@ CliWidgets are a series of widgets to use in the terminal, with the idea to help
 
 ## Requirements
 
-CliWidgets need the next requirements to work:
+CliWidgets has been tested on Windows 10 (x64) and Linux (Ubuntu x64).
+
+For Linux, the requisites are:
 
 * A **C++11** compiler.
 * The **stty** linux utility which I use to hide the terminal input for InputPassword and for hide the arrow keys when selecting an option in menus. 
 * The **tput** to hide / restore the terminal cursor.
 
-For the moment it only works on Linux, not tested in Windows.
+
 
 ## Compile
 
-For compiling the library I have created two commands in Makefile:
-* `make static`: creates the static library (.a)
-* `make dynamic`: creates the dynamic library (.so)
+On Linux, you can execute the script _cmake_build.sh_, in the root folder of the project.
+
+On Windows you will have to do the steps manually:
+
+1. Create a _build_ folder in the main directory of the project.
+2. Execute this command: `cmake -G  "Visual Studio 16 2019" ../src`
+
+It will generate a solution in the build folder with two projects:
+
+1. A library (CliWidget).
+2. An executable project that uses the main.cpp, used for the development of the library.
 
 ## Widgets
 
