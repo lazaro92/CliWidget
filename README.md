@@ -24,7 +24,7 @@ On Linux, create a build folder and `cd` inside it. Then eexecute the next comma
 On Windows you will have to do the steps manually:
 
 1. Create a _build_ folder in the main directory of the project.
-2. Execute this command: `cmake -G  "Visual Studio 16 2019" ../src`
+2. Execute this command: `cmake -G  "Visual Studio 16 2019" ..` then `cmake --build .`
 
 It will generate a solution in the build folder with two projects:
 
@@ -79,12 +79,12 @@ inputPsw.setRegex("^.{6,}");
 textPwd.display();
 inputPsw.display();
 
-CliWidget::Text textResult("The entered password is " + inputPsw.getValue());
+cliw::Text textResult("The entered password is " + inputPsw.getValue());
 textResult.setBold(true);
 textResult.display();
 
 if (!inputPsw.check()) {
-    CliWidget::Text textResult("The entered password is short");
+    cliw::Text textResult("The entered password is short");
     textResult.display();
 }   
 ```
