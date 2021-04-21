@@ -5,7 +5,7 @@
   @version 0.1 11/09/20 
   */
 
-#include "Text.hpp"
+#include "CliWidget/Text.hpp"
 
 namespace CliWidget {
     Text::Text(const std::string &text): _text(text) {

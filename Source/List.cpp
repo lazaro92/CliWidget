@@ -10,7 +10,7 @@ List: contains the implementation of the class List
 #include <csignal>
 #endif
 
-#include "List.hpp"
+#include "CliWidget/List.hpp"
 
 namespace CliWidget {
 

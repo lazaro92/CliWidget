@@ -13,7 +13,7 @@
 #include <iostream>
 #include <regex>
 
-#include "InputPassword.hpp"
+#include "CliWidget/InputPassword.hpp"
 
 namespace CliWidget {
 
