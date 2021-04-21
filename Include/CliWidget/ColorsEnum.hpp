@@ -11,7 +11,7 @@ ColorsEnum: contains the enums for the terminal colors
 #include <iostream>
 
 
-namespace CliWidget {
+namespace cliw {
 
     /**
       enum class for the foreground color.

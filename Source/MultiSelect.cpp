@@ -10,7 +10,7 @@
 
 #include "CliWidget/MultiSelect.hpp"
 
-namespace CliWidget {
+namespace cliw {
 
     MultiSelect::MultiSelect(const std::vector<std::string> &options) : List(options){
         _boolIndexes = std::vector<bool> (options.size(), false);
@@ -143,7 +143,7 @@ namespace CliWidget {
     std::string MultiSelect::getTextToPrint() {
         std::string text = "", bgBegin = "", bgEnd ="";
 
-        if (_bgColor != CliWidget::BackgroundColor::NONE) {
+        if (_bgColor != cliw::BackgroundColor::NONE) {
             bgBegin = "\033[" + _bgColor + "m";
             bgEnd = "\033[0m";
         }

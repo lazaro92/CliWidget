@@ -11,7 +11,7 @@
 
 #include "CliWidget/Select.hpp"
 
-namespace CliWidget {
+namespace cliw {
 
     Select::Select(const std::vector<std::string> &options) : List(options) {
     
@@ -111,7 +111,7 @@ namespace CliWidget {
     std::string Select::getTextToPrint() {
         std::string text = "", bgBegin = "", bgEnd ="";
 
-        if (_bgColor != CliWidget::BackgroundColor::NONE) {
+        if (_bgColor != cliw::BackgroundColor::NONE) {
             bgBegin = "\033[" + _bgColor + "m";
             bgEnd = "\033[0m";
         }

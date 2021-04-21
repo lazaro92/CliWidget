@@ -7,7 +7,7 @@
 
 #include "CliWidget/Text.hpp"
 
-namespace CliWidget {
+namespace cliw {
     Text::Text(const std::string &text): _text(text) {
 
     }
@@ -20,11 +20,11 @@ namespace CliWidget {
         return _text;
     }
 
-    void Text::setBackgroundColor(CliWidget::BackgroundColor color) {
+    void Text::setBackgroundColor(cliw::BackgroundColor color) {
         _bgrColor = color;
     }
 
-    void Text::setForegroundColor(CliWidget::ForegroundColor color) {
+    void Text::setForegroundColor(cliw::ForegroundColor color) {
         _fgrColor = color;
     }
 
@@ -45,9 +45,9 @@ namespace CliWidget {
     }
 
     void Text::display() {
-        if (_bgrColor != CliWidget::BackgroundColor::NONE)
+        if (_bgrColor != cliw::BackgroundColor::NONE)
             std::cout << "\033[" << _bgrColor << "m";
-        if (_fgrColor != CliWidget::ForegroundColor::NONE)
+        if (_fgrColor != cliw::ForegroundColor::NONE)
             std::cout << "\033[" << _fgrColor << "m";
         if (_bold)
             std::cout << "\033[" << "1m";

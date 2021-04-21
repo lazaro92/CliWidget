@@ -13,7 +13,7 @@
 
 #include "ColorsEnum.hpp"
 
-namespace CliWidget {
+namespace cliw {
 
     /**
       Create a widget that lets the user to display text with format
@@ -42,13 +42,13 @@ namespace CliWidget {
               set the background color of the text
               @param color The color of the background
               */
-            void setBackgroundColor(CliWidget::BackgroundColor color);
+            void setBackgroundColor(cliw::BackgroundColor color);
 
             /**
               set the foreground color of the text
               @param color The color of the foreground
               */
-            void setForegroundColor(CliWidget::ForegroundColor color);
+            void setForegroundColor(cliw::ForegroundColor color);
 
             /**
               enable the underline format. The text will be underline
@@ -108,12 +108,12 @@ namespace CliWidget {
             /**
               The foreground color
               */
-            CliWidget::ForegroundColor _fgrColor = CliWidget::ForegroundColor::NONE;
+            cliw::ForegroundColor _fgrColor = cliw::ForegroundColor::NONE;
 
             /**
               The background color
               */
-            CliWidget::BackgroundColor _bgrColor = CliWidget::BackgroundColor::NONE;
+            cliw::BackgroundColor _bgrColor = cliw::BackgroundColor::NONE;
     };
 }
 

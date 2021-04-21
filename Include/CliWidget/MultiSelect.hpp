@@ -13,7 +13,7 @@
 
 #include "List.hpp"
 
-namespace CliWidget {
+namespace cliw {
 
     /**
       Create a widget that lets the user to select one or more items of a list

@@ -12,7 +12,7 @@ List: contains the implementation of the class List
 
 #include "CliWidget/List.hpp"
 
-namespace CliWidget {
+namespace cliw {
 
     List::List(const std::vector<std::string>& options) : _options(options)
     {
@@ -36,7 +36,7 @@ namespace CliWidget {
         _options.erase(_options.begin() + index);
     }
 
-    void List::setBackgroundColor(CliWidget::BackgroundColor bgColor) {
+    void List::setBackgroundColor(cliw::BackgroundColor bgColor) {
         _bgColor = bgColor;
     }
 

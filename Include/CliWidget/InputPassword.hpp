@@ -13,7 +13,7 @@
 #endif
 #include <string>
 
-namespace CliWidget {
+namespace cliw {
 
     /**
       Create a widget that lets the user to input their password

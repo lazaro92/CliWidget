@@ -19,7 +19,7 @@ For Linux, the requisites are:
 
 ## Compile
 
-On Linux, you can execute the script _cmake_build.sh_, in the root folder of the project.
+On Linux, create a build folder and `cd` inside it. Then eexecute the next commands: `cmake ..` and after `cmake --build .` 
 
 On Windows you will have to do the steps manually:
 
@@ -46,12 +46,12 @@ A simple output text to display a text. A format can be applied to it, enabling 
 Example:
 
 ```cpp
-#include "Text.hpp"
+#include "CliWidget/Text.hpp"
 
-CliWidget::Text text("Hello World");
+cliw::Text text("Hello World");
 
-text.setBackgroundColor(CliWidget::BackgroundColor::GREEN);
-text.setForegroundColor(CliWidget::ForegroundColor::BLUE);
+text.setBackgroundColor(cliw::BackgroundColor::GREEN);
+text.setForegroundColor(cliw::ForegroundColor::BLUE);
 text.setUnderline(true);
 text.setBold(true);
 text.setItalic(true);
@@ -69,11 +69,11 @@ A password input that hides the input when users are writting hteir passwords li
 Example of input password and a regex to validate that it's length is 6 characters or more:
 
 ```cpp
-#include "Text.hpp"
-#include "InputPassword.hpp"
+#include "CliWidget/Text.hpp"
+#include "CliWidget/InputPassword.hpp"
 
-CliWidget::Text textPwd("Insert a Password:");
-CliWidget::InputPassword inputPsw;
+cliw::Text textPwd("Insert a Password:");
+cliw::InputPassword inputPsw;
 inputPsw.setRegex("^.{6,}");
 
 textPwd.display();
@@ -98,14 +98,14 @@ This widget display a set of options. The user can navigate through them with up
 Example:
 
 ```cpp
-#include "Select.hpp"
-#include "Text.hpp"
+#include "CliWidget/Select.hpp"
+#include "CliWidget/Text.hpp"
 
-CliWidget::Select select(std::vector<std::string> {"One", "Two", "Three"});
+cliw::Select select(std::vector<std::string> {"One", "Two", "Three"});
 select.display();
  
-CliWidget::Text text1("Selected index is " + std::to_string(select.getSelectedIndex()) + "");
-CliWidget::Text text2("Selected value is " + select.getSelectedValue());
+cliw::Text text1("Selected index is " + std::to_string(select.getSelectedIndex()) + "");
+cliw::Text text2("Selected value is " + select.getSelectedValue());
 
 text1.display();
 text2.display();
@@ -120,10 +120,10 @@ This widget is like the select, with the difference that the user can select mor
 Example:
 
 ```cpp
-#include "MultiSelect.hpp"
-#include "Text.hpp"
+#include "CliWidget/MultiSelect.hpp"
+#include "CliWidget/Text.hpp"
 
-CliWidget::MultiSelect multiSelect(std::vector<std::string>{"Cat", "Dog", "Hamster", "Bird", "Fish"});
+cliw::MultiSelect multiSelect(std::vector<std::string>{"Cat", "Dog", "Hamster", "Bird", "Fish"});
 multiSelect.display();
 
 std::string strText3 = "Selected indexes are ";

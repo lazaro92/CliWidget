@@ -15,7 +15,7 @@
 
 #include "CliWidget/InputPassword.hpp"
 
-namespace CliWidget {
+namespace cliw {
 
     std::string InputPassword::getValue() {
         return _value;

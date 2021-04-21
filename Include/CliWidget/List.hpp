@@ -18,7 +18,7 @@ List: contains the definition of the class List
 
 #include "ColorsEnum.hpp"
 
-namespace CliWidget {
+namespace cliw {
 
     /**
       Parent class of Lists (for the moment List and MultiList)
@@ -60,7 +60,7 @@ namespace CliWidget {
               Set the bacground color for the current position
               @param bgColor The color
               */
-            void setBackgroundColor(CliWidget::BackgroundColor bgColor);
+            void setBackgroundColor(cliw::BackgroundColor bgColor);
 
             /**
               Display the widget in the terminal and lets the user to navigate between the options and select one of them
@@ -107,7 +107,7 @@ namespace CliWidget {
             /**
               The background color
               */
-            CliWidget::BackgroundColor _bgColor = CliWidget::BackgroundColor::NONE;
+            cliw::BackgroundColor _bgColor = cliw::BackgroundColor::NONE;
 
 #if defined(_WIN32) || defined(_WIN64)
         private:
