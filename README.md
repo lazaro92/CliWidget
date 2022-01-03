@@ -1,7 +1,7 @@
 # CliWidget
 Widgets for using in C++ terminal
 
-## What it is?
+## What is it?
 
 CliWidgets are a series of widgets to use in the terminal, with the idea to help programmers to build easy menus or inputs/outputs that users will use to interact with the application.
 
@@ -14,8 +14,6 @@ For Linux, the requisites are:
 * A **C++11** compiler.
 * The **stty** linux utility which I use to hide the terminal input for InputPassword and for hide the arrow keys when selecting an option in menus. 
 * The **tput** to hide / restore the terminal cursor.
-
-
 
 ## Compile
 
